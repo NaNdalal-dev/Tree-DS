@@ -21,11 +21,27 @@ class BinarySearchTree:
 			else:
 				self.right = BinarySearchTree(value)
 
-	def __repr__(self):
+	def search(self,value):
+		if self.key == value:
+			print(f"Node {value} exists.")
+			return
+		if value < self.key:
+			if self.left:
+				self.left.search(value)
+			else:
+				print(f"Node {value} not found.")
+		else:
+			if self.right:
+				self.right.search(value)
+			else:
+				print(f"Node {value} not found.")
+
+	def __repr__(self):	
 		return f"{self.key}"
 
 a = BinarySearchTree(10)
-a.insert(5)
-a.insert(30)
+for val in [1,5,2,56,12,56,121,-1]:
+	a.insert(val)
 
-print(a.left,a.key,a.right)
+for val in [1,5,2,56,12,56,121,-1]:
+	a.search(val)
