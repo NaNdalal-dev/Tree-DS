@@ -47,14 +47,50 @@ class BinarySearchTree:
 		
 		if self.left:
 			self.left.inorder()
-
 		print(self.key)
-
 		if self.right:
 			self.right.inorder()
 
+	def postorder(self):
+		if self.left:
+			self.left.postorder()
+		if self.right:
+			self.right.postorder()
+		print(self.key)
+
+	def traverse(self,order="pre"):
+		if order == "pre":
+			print("Pre-Order:")
+			self.preorder()
+
+		elif order == "post":
+			print("Post-Order:")
+			self.postorder()
+
+		elif order == "in":
+			print("In-Order:")
+			self.inorder()
+
+		elif order == "all":
+			print("Pre-Order:")
+			self.preorder()
+
+			print("In-Order:")
+			self.inorder()
+
+			print("Post-Order:")
+			self.postorder()
+		else:
+			raise ValueError("Choose the correct order('In','Pre' and 'post') or 'all'")
+
+
+	def bfs(self):
+		pass
+
 	def __repr__(self):	
 		return f"{self.key}"
+
+
 
 a = BinarySearchTree(21)
 for val in [10,30,5,12,25,100,3,7]:
@@ -64,4 +100,7 @@ for val in [10,30,5,12,25,100,3,7]:
 #	a.search(val)
 
 #a.preorder()
-a.inorder()
+#a.inorder()
+#a.postorder()
+
+a.traverse('ad')
